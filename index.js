@@ -137,7 +137,48 @@ try {
         } catch (error) {
            res.status(500).json({error:"Failed to delete Event Data"}) 
         }
+    }) 
+    const updateSpeakerData=async(speakerId,dataToBeUpdated)=>{
+try {
+  const updatedData=await Speaker.findByIdAndUpdate(speakerId,dataToBeUpdated,{new:true}) 
+  return updatedData 
+} catch (error) {
+    throw error
+}
+    }
+
+    app.post("/speakers/:speakerId",async(req,res)=>{
+        try {
+        const updatedData=await updateSpeakerData(req.params.speakerId,req.body)  
+        if(updatedData){
+            res.status(200).json({message: "Data Updated Successfully"})
+        }  else {
+            res.status(404).json({error:"Data Not Found"})
+        }
+        } catch (error) {
+            res.status(500).json({error:"Failed to update data"})
+        }
     })
+    const updatEventData=async(eventId,dataToBeUpdated)=>{
+        try {
+          const updatedData=await Event.findByIdAndUpdate(eventId,dataToBeUpdated,{new:true}) 
+          return updatedData 
+        } catch (error) {
+            throw error
+        }
+            }
+            app.post("/events/:eventId",async(req,res)=>{
+                try {
+                const updatedData=await updatEventData(req.params.eventId,req.body)  
+                if(updatedData){
+                    res.status(200).json({message: "Data Updated Successfully"})
+                }  else {
+                    res.status(404).json({error:"Data Not Found"})
+                }
+                } catch (error) {
+                    res.status(500).json({error:"Failed to update data"})
+                }
+            })
     app.listen(PORT,()=>{
         console.log("App is running on the PORT: ",PORT)
     })
