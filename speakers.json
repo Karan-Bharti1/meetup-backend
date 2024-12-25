@@ -1,0 +1,27 @@
+[{
+    "name":"Sarah",
+    "designation":"Marketing Manager",
+    "profileURL":"https://images.pexels.com/photos/8872162/pexels-photo-8872162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+},{
+    "name":"John",
+"designation":"Senior Software Developer",
+    "profileURL":"https://images.pexels.com/photos/6325968/pexels-photo-6325968.jpeg?auto=compress&cs=tinysrgb&w=600"
+},{
+    "name":"Jack",
+"designation":"UI/UX Engineer",
+    "profileURL":"https://images.pexels.com/photos/3321799/pexels-photo-3321799.jpeg?auto=compress&cs=tinysrgb&w=600"
+},{
+    "name":"Glenn",
+    "designation":"HR Executive",
+    "profileURL":"https://images.pexels.com/photos/8730783/pexels-photo-8730783.jpeg?auto=compress&cs=tinysrgb&w=400"
+},{
+    "name":"Steve",
+    "designation":"Accounts Head",
+    "profileURL":"https://images.pexels.com/photos/6326055/pexels-photo-6326055.jpeg?auto=compress&cs=tinysrgb&w=400"
+},
+{
+    "name":"Smith",
+    "designation":"Financial Analysis Expert",
+    "profileURL":"https://images.pexels.com/photos/6326055/pexels-photo-6326055.jpeg?auto=compress&cs=tinysrgb&w=400"
+}
+]
