@@ -118,6 +118,26 @@ async function readAllSpeakers() {
            res.status(500).json({error:"Failed to delete Speaker Data"}) 
         }
     })
+    const deleteEvent=async(eventId)=>{
+try {
+ const deletedData=await Event.findByIdAndDelete(eventId)   
+ return deletedData
+} catch (error) {
+    throw error
+}
+    }
+    app.delete("/events/:eventId",async(req,res)=>{
+        try {
+            const deletedData=await deleteEvent(req.params.eventId)
+            if(deletedData){
+                res.status(200).json({message:"Data deleted successfully"})
+            }else{
+                res.status(404).json({message:"Data Not Found"})
+            }
+        } catch (error) {
+           res.status(500).json({error:"Failed to delete Event Data"}) 
+        }
+    })
     app.listen(PORT,()=>{
         console.log("App is running on the PORT: ",PORT)
     })
