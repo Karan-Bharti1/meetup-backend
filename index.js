@@ -57,6 +57,47 @@ async function readAllSpeakers() {
             req.status(500).json({error:"Failed to get data"})
         }
     })
+    const readAllEvents=async()=>{
+        try {
+        const eventsData=await Event.find().populate("speakers")
+        console.log(eventsData) 
+        return eventsData  
+        } catch (error) {
+         throw error   
+        }
+    }
+    app.get("/events",async(req,res)=>{
+        try {
+            const events=await readAllEvents()
+            if(events.length!=0){
+              res.status(200).json(events)
+            }else{
+              res.status(404).json({error:"Data not found."})
+            }
+        } catch (error) {
+            res.status(500).json({error:"Failed to get data"})
+        }
+    })
+    async function createEvent(eventData) {
+        try {
+          const newEvent=new Event(eventData)  
+          const saveData= await newEvent.save()
+          return saveData
+        } catch (error) {
+            throw error
+        }
+    }
+    app.post("/events",async(req,res)=>{
+        try {
+            const newEvent=await createEvent(req.body)
+    if(newEvent){
+        res.status(200).json({message:"Event Added to the database"})
+    }
+            
+        } catch (error) {
+            res.status(500).json({error:"Failed to save Event"})
+        }
+    })
     app.listen(PORT,()=>{
         console.log("App is running on the PORT: ",PORT)
     })
